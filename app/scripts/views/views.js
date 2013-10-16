@@ -154,7 +154,7 @@ bs.MainSongView = Backbone.View.extend({
         this.initScene();
         this.initSparks();
 
-        
+
         return this;
     },
 
@@ -199,7 +199,7 @@ bs.MainSongView = Backbone.View.extend({
                 $("#songQuery").val("");
                 if (tracks.length > 0) {
                     var template = bs.templates.songResult;
-                    //that.collection.reset();
+                    that.collection.reset();
                     $.each(tracks, function(i, o) {
                         that.collection.add(new bs.NewSong(o));
                     })
