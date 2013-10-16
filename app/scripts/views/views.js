@@ -135,8 +135,7 @@ bs.MainSongView = Backbone.View.extend({
         _.bindAll(this, "render", "keyDown", "addNewSong", "clearResults", "searchSC", "initScene", "onwindowresize", "initSparks", "sparksCallback", "onParticleCreated", "onParticleDead", "playPause", "animate", "renderScene");
         this.render();
 
-        this.initScene();
-        this.initSparks();
+        
     },
 
     events: {
@@ -147,8 +146,15 @@ bs.MainSongView = Backbone.View.extend({
     },
 
     render: function() {
+        
+
         var entry = this.template();
         this.$el.html(entry);
+
+        this.initScene();
+        this.initSparks();
+
+        
         return this;
     },
 
@@ -190,11 +196,10 @@ bs.MainSongView = Backbone.View.extend({
                 limit: 52,
                 order: 'hotness'
             }, function(tracks) {
-                //$("#songResults").empty();
                 $("#songQuery").val("");
                 if (tracks.length > 0) {
                     var template = bs.templates.songResult;
-                    that.collection.reset();
+                    //that.collection.reset();
                     $.each(tracks, function(i, o) {
                         that.collection.add(new bs.NewSong(o));
                     })
@@ -246,7 +251,6 @@ bs.MainSongView = Backbone.View.extend({
             });
             kick.on();
             self.dancer.play();
-            //self.updateWaveform(song.waveform_url);
 
             if (!window.webkitAudioContext) {
                 alert("Web Audio isn't available in your browser. But...you can still play the HTML5 audio :)");
@@ -272,22 +276,6 @@ bs.MainSongView = Backbone.View.extend({
         this.renderer.setSize(window.innerWidth, window.innerHeight);        
         window.addEventListener('resize', this.onwindowresize, false);       
     },    
-
-    updateWaveform: function(textureURL){
-        if(this.waveformPlane){
-            this.waveformPlane.material.map = THREE.ImageUtils.loadTexture( textureURL );
-        }
-        else{
-            var material = new THREE.MeshLambertMaterial({
-                map: THREE.ImageUtils.loadTexture(textureURL)
-            });
-            material.needsUpdate = true;
-
-            var geo = new THREE.PlaneGeometry(100,100,10,10);
-            this.waveformPlane = new THREE.Mesh(geo, material);
-            this.scene.add(this.waveformPlane);
-        }        
-    },
 
     onwindowresize: function() {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
