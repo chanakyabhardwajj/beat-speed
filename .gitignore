@@ -1,6 +1,6 @@
 node_modules
 temp
-dist
+.idea
 .sass-cache
 app/bower_components
 .tmp/
