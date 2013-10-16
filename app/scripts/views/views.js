@@ -194,6 +194,7 @@ bs.MainSongView = Backbone.View.extend({
                 $("#songQuery").val("");
                 if (tracks.length > 0) {
                     var template = bs.templates.songResult;
+                    this.collection.reset();
                     $.each(tracks, function(i, o) {
                         that.collection.add(new bs.NewSong(o));
                     })

@@ -235,11 +235,13 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,txt}',
                         '.htaccess',
-                        'images/{,*/}*.{webp,gif}'
+                        'images/{,*/}*.{webp,gif}',
+                        'styles/{,*/}*.*'
                     ]
                 }]
             }
         },
+
         bower: {
             all: {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
@@ -318,7 +320,7 @@ module.exports = function (grunt) {
         'concat',
         'cssmin',
         //'uglify',
-        'copy',
+        'copy:dist',
         'usemin'
     ]);
 
