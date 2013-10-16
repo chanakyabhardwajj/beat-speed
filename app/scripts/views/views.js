@@ -245,7 +245,7 @@ bs.MainSongView = Backbone.View.extend({
             });
             kick.on();
             self.dancer.play();
-            self.updateWaveform(song.waveform_url);
+            //self.updateWaveform(song.waveform_url);
 
             if (!window.webkitAudioContext) {
                 alert("Web Audio isn't available in your browser. But...you can still play the HTML5 audio :)");
