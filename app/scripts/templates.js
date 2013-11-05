@@ -7,7 +7,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"navbar navbar-fixed-top clearfix\">\n        <div class=\"navbar-inner\">\n            <ul class=\"nav pull-left\">\n                <li id=\"descriptionBox\" class=\"\">\n                    <!--\n                    <a href=\"https://github.com/chanakyabhardwajj/beat-speed\"><img style=\"position: absolute; top: 0; left: 0; border: 0;\" src=\"https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png\" alt=\"Fork me on GitHub\"></a>\n                    -->\n                    <em>beat speed</em> built with Soundcloud, Three.js, Sparks.js, Dancer.js & Bootstrap\n                </li>\n            </ul>\n\n            <ul class=\"nav pull-right\">\n                <li id=\"userBox\" class=\"\">\n	                <div id=\"userName\" href=\"#\">\n					    <span>Yo ";
+  buffer += "<div class=\"navbar navbar-fixed-top clearfix\">\n        <div class=\"navbar-inner\">\n            <ul class=\"nav pull-left\">\n                <li id=\"descriptionBox\" class=\"\">\n                    <!--<a href=\"https://github.com/chanakyabhardwajj/beat-speed\"><img style=\"position: absolute; top: 0; left: 0; border: 0;\" src=\"https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png\" alt=\"Fork me on GitHub\"></a>-->\n                    <em id=\"title\">beat speed</em> <span id=\"subtitle\">built with Soundcloud, Three.js, Sparks.js, Dancer.js & Bootstrap</span>\n                </li>\n            </ul>\n\n\n            <ul class=\"nav pull-right\">\n                <li id=\"userBox\" class=\"\">\n	                <div id=\"userName\" href=\"#\">\n					    <span>";
   if (stack1 = helpers.first_name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.first_name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
@@ -30,7 +30,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"block loginBox\">\n    <div id=\"loginButton\" class=\"zocial facebook\">Login with Facebook</div>\n</div>\n<div id=\"loginError\" class=\"alert alert-error hide\">There was an error in signing up. Try again.</div>";
+  return "<div class=\"block loginBox\">\n    <div id=\"loginButton\" class=\"zocial facebook\">Login with Facebook</div>\n    <div id=\"loginDisclaimer\">We don't post anything on your behalf. Promise!</div>\n</div>\n<div id=\"loginError\" class=\"alert alert-error hide\">There was an error in signing up. Try again.</div>";
   });
 
 this["bs"]["templates"]["mainSong"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {

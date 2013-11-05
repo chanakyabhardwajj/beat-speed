@@ -62,7 +62,8 @@ bs.OldSongView = Backbone.View.extend({
         "click .oldSong": "playSong"
     },
 
-    playSong: function() {        
+    playSong: function() {
+        window.scrollTo(0,0);
         var song = this.model.attributes;
         bs.vent.trigger("SONG.PLAY", song); 
     },
@@ -102,7 +103,8 @@ bs.NewSongView = Backbone.View.extend({
         "click .songResult": "playSong"
     },
 
-    playSong: function() {               
+    playSong: function() {
+        window.scrollTo(0,0);
         var song = this.model.attributes;
         bs.vent.trigger("SONG.PLAY", song);        
     },
@@ -217,7 +219,7 @@ bs.MainSongView = Backbone.View.extend({
 
         var oldSong = bs.firebase.userSongs.child(song.id);
         oldSong.set(song);
-
+        $(".progressInd").show();
         SC.stream("/tracks/" + song.id, function(sound) {
             var song_streamURL = sound.url;
             if (self.dancer && self.dancer.isPlaying()) {
@@ -228,7 +230,6 @@ bs.MainSongView = Backbone.View.extend({
             self.dancer.load({
                 src: song_streamURL
             });
-            $(".progressInd").show();
 
             self.dancer.bind("loaded", function(){self.playSong.apply(self)});
 
@@ -306,7 +307,7 @@ bs.MainSongView = Backbone.View.extend({
         });
         var h = this.h;
 
-        material.color.setHSV(h, 1, 0.3); //0.7
+        material.color.setHSV(Math.random(), 1, 0.3); //0.7
         h += 0.001;
         if (h > 1) h -= 1;
 
